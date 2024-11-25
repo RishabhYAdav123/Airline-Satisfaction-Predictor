@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Satisfaction Predictor</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Airline Satisfaction Predictor</h1>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="Age">Age:</label>
+                <input type="number" name="Age" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Customer_Type">Customer Type:</label>
+                <select name="Customer_Type">
+                    <option value="Loyal Customer">Loyal Customer</option>
+                    <option value="Disloyal Customer">Disloyal Customer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Type_of_Travel">Type of Travel:</label>
+                <select name="Type_of_Travel">
+                    <option value="Business Travel">Business Travel</option>
+                    <option value="Personal Travel">Personal Travel</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Class">Class:</label>
+                <select name="Class">
+                    <option value="Business">Business</option>
+                    <option value="Economy">Economy</option>
+                    <option value="Economy Plus">Economy Plus</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Flight_Distance">Flight Distance:</label>
+                <input type="number" name="Flight_Distance" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Departure_Delay">Departure Delay (minutes):</label>
+                <input type="number" name="Departure_Delay" step="0.01">
+            </div>
+
+            <div class="form-group">
+                <label for="Arrival_Delay">Arrival Delay (minutes):</label>
+                <input type="number" name="Arrival_Delay" step="0.01">
+            </div>
+
+            <div class="form-group">
+                <label for="On_board_Service">On-board Service (1-5):</label>
+                <input type="number" name="On_board_Service" min="1" max="5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Seat_Comfort">Seat Comfort (1-5):</label>
+                <input type="number" name="Seat_Comfort" min="1" max="5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Leg_Room_Service">Leg Room Service (1-5):</label>
+                <input type="number" name="Leg_Room_Service" min="1" max="5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Cleanliness">Cleanliness (1-5):</label>
+                <input type="number" name="Cleanliness" min="1" max="5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Food_and_Drink">Food and Drink (1-5):</label>
+                <input type="number" name="Food_and_Drink" min="1" max="5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="In_flight_Service">In-flight Service (1-5):</label>
+                <input type="number" name="In_flight_Service" min="1" max="5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="In_flight_Wifi_Service">In-flight Wifi Service (1-5):</label>
+                <input type="number" name="In_flight_Wifi_Service" min="1" max="5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="In_flight_Entertainment">In-flight Entertainment (1-5):</label>
+                <input type="number" name="In_flight_Entertainment" min="1" max="5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Baggage_Handling">Baggage Handling (1-5):</label>
+                <input type="number" name="Baggage_Handling" min="1" max="5" required>
+            </div>
+
+            <button type="submit" class="btn">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="prediction">
+            <h2>{{ prediction_text }}</h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
